@@ -1,9 +1,15 @@
 name: release
+
 on:
   workflow_dispatch:
   push:
     tags:
       - 'v*.*.*'
+
+env:
+  UPSTREAM_KREW_INDEX_REPO_NAME: kube-atlas-cli
+  UPSTREAM_KREW_INDEX_REPO_OWNER: s-urbaniak
+
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
@@ -22,7 +28,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Update new version in krew-index
-        uses: rajatjindal/krew-release-bot@v0.0.38
-        env:
-          UPSTREAM_KREW_INDEX_REPO_NAME: kube-atlas-cli
-          UPSTREAM_KREW_INDEX_REPO_OWNER: s-urbaniak
+        uses: rajatjindal/krew-release-bot@v0.0.46
