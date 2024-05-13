@@ -1,4 +1,4 @@
-module github.com/replicatedhq/krew-plugin-template
+module github.com/s-urbaniak/kube-atlas-cli
 
 go 1.16
 
