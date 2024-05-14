@@ -32,7 +32,11 @@ func RootCmd() *cobra.Command {
 	k8sFlags := genericclioptions.NewConfigFlags(false)
 	k8sFlags.AddFlags(cmd.PersistentFlags())
 	cmd.SetContext(signals.SetupSignalHandler()) // wire SIGTERM and SIGINT
-	cmd.AddCommand(configcmd.Builder(), operatorcmd.Builder(), logscmd.Builder(k8sFlags))
+	cmd.AddCommand(
+		configcmd.Builder(),
+		operatorcmd.Builder(),
+		logscmd.Builder(k8sFlags),
+	)
 	return cmd
 }
 
