@@ -54,3 +54,6 @@ and the release is available at https://github.com/s-urbaniak/kube-atlas-cli/rel
 TAG_NAME=vx.y.z GITHUB_TOKEN=<REDACTED> UPSTREAM_KREW_INDEX_REPO_NAME=kube-atlas-cli UPSTREAM_KREW_INDEX_REPO_OWNER=s-urbaniak go run cmd/krew/main.go
 ```
 Replace `GITHUB_TOKEN` and `TAG_NAME` accordingly.
+
+3. This will create a Pull Request to update the plugin index. Example: https://github.com/s-urbaniak/kube-atlas-cli/pull/4.
+4. Approve and merge the pull request.
