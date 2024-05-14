@@ -2,12 +2,14 @@ package cli
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
-	"os"
 
 	configcmd "github.com/s-urbaniak/kube-atlas-cli/cmd/plugin/cli/config"
+	logscmd "github.com/s-urbaniak/kube-atlas-cli/cmd/plugin/cli/logs"
 	operatorcmd "github.com/s-urbaniak/kube-atlas-cli/cmd/plugin/cli/operator"
 	"github.com/s-urbaniak/kube-atlas-cli/internal/config"
 )
@@ -24,12 +26,8 @@ func RootCmd() *cobra.Command {
 		Long:  `This command provides access to Kubernetes features within Atlas.`,
 	}
 
-	cmd.AddCommand(configcmd.Builder(), operatorcmd.Builder())
-
 	cobra.OnInitialize(initConfig)
-
-	KubernetesConfigFlags = genericclioptions.NewConfigFlags(false)
-	KubernetesConfigFlags.AddFlags(cmd.Flags())
+	cmd.AddCommand(configcmd.Builder(), operatorcmd.Builder(), logscmd.Builder())
 
 	return cmd
 }
