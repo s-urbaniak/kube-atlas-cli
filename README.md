@@ -34,6 +34,12 @@ kubectl atlas --help
 
 ## Developer Notes
 
+### Architecture
+
+This plugin builds on top of [krew](https://github.com/kubernetes-sigs/krew/tree/master).
+
+An overview about the plugin architecture is available at https://github.com/kubernetes-sigs/krew/blob/master/docs/KREW_ARCHITECTURE.md.
+
 ### Release
 
 1. Push a tag in the form of `vx.y.z`:
