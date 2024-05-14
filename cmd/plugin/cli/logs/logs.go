@@ -6,12 +6,10 @@ import (
 	akov2 "github.com/mongodb/mongodb-atlas-kubernetes/v2/pkg/api/v1"
 	"github.com/s-urbaniak/kube-atlas-cli/internal/cli"
 	"github.com/s-urbaniak/kube-atlas-cli/internal/config"
-	"github.com/s-urbaniak/kube-atlas-cli/internal/flag"
 	"github.com/s-urbaniak/kube-atlas-cli/internal/kubernetes/logs"
 	"github.com/s-urbaniak/kube-atlas-cli/internal/pointer"
 	"github.com/s-urbaniak/kube-atlas-cli/internal/prerun"
 	"github.com/s-urbaniak/kube-atlas-cli/internal/store"
-	"github.com/s-urbaniak/kube-atlas-cli/internal/usage"
 	"github.com/spf13/cobra"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 	"k8s.io/client-go/kubernetes/scheme"
@@ -20,7 +18,7 @@ import (
 
 type LogsOpts struct {
 	cli.GlobalOpts
-	*genericclioptions.ConfigFlags
+	k8sFlags *genericclioptions.ConfigFlags
 	logname  string
 	hostname string
 	follow   bool
@@ -28,7 +26,7 @@ type LogsOpts struct {
 }
 
 func (opts *LogsOpts) Run(ctx context.Context, deploymentName string) error {
-	restConfig, err := opts.ToRESTConfig()
+	restConfig, err := opts.k8sFlags.ToRESTConfig()
 	if err != nil {
 		return fmt.Errorf("failed to create REST config: %w", err)
 	}
@@ -43,7 +41,7 @@ func (opts *LogsOpts) Run(ctx context.Context, deploymentName string) error {
 		return fmt.Errorf("unable to setup kubernetes client: %w", err)
 	}
 
-	ns := opts.Namespace
+	ns := opts.k8sFlags.Namespace
 	if ns == nil || *ns == "" {
 		ns = pointer.Get("default")
 	}
@@ -79,9 +77,9 @@ func (opts *LogsOpts) initStores(ctx context.Context) prerun.CmdOpt {
 	}
 }
 
-func Builder() *cobra.Command {
+func Builder(k8sFlags *genericclioptions.ConfigFlags) *cobra.Command {
 	const use = "logs"
-	opts := &LogsOpts{ConfigFlags: genericclioptions.NewConfigFlags(false)}
+	opts := &LogsOpts{k8sFlags: k8sFlags}
 	cmd := &cobra.Command{
 		Use:   use,
 		Short: "Deployment logs",
@@ -102,8 +100,6 @@ func Builder() *cobra.Command {
 	cmd.Flags().StringVarP(&opts.logname, "logname", "l", "mongodb", `Human-readable label that identifies the log file that you want to return. 
 To return audit logs, enable Database Auditing for the specified project.
 Possible values are "mongodb" "mongos" "mongodb-audit-log" "mongos-audit-log".`)
-	cmd.Flags().StringVar(&opts.OrgID, flag.OrgID, "", usage.OrgID)
-	opts.ConfigFlags.AddFlags(cmd.Flags())
 
 	return cmd
 }
