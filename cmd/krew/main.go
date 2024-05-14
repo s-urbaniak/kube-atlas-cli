@@ -9,14 +9,15 @@ import (
 )
 
 func main() {
-	err := process(context.Background())
+	pr, err := process(context.Background())
 	if err != nil {
-		fmt.Printf("\n%v\n", err)
+		fmt.Fprintf(os.Stderr, "\n%v\n", err)
 		os.Exit(1)
 	}
+	fmt.Printf("\n%v\n", pr)
 }
 
-func process(ctx context.Context) error {
+func process(ctx context.Context) (string, error) {
 	releaseRequest := &source.ReleaseRequest{
 		TagName:            os.Getenv("TAG_NAME"),
 		PluginName:         "atlas",
@@ -28,7 +29,7 @@ func process(ctx context.Context) error {
 
 	pluginName, pluginManifest, err := source.ProcessTemplate(".krew.yaml", releaseRequest)
 	if err != nil {
-		return fmt.Errorf("error processing template: %w", err)
+		return "", fmt.Errorf("error processing template: %w", err)
 	}
 
 	releaseRequest.PluginName = pluginName
@@ -46,8 +47,7 @@ func process(ctx context.Context) error {
 
 	pr, err := r.Release(releaseRequest)
 	if err != nil {
-		return fmt.Errorf("error releasing request: %w", err)
+		return "", fmt.Errorf("error releasing request: %w", err)
 	}
-	fmt.Println(pr)
-	return nil
+	return pr, nil
 }
