@@ -48,12 +48,6 @@ An overview about the plugin architecture is available at https://github.com/kub
 git tag vx.y.z
 git push origin --tags
 ```
-2. Once the [release GitHub action](https://github.com/s-urbaniak/kube-atlas-cli/actions/workflows/release.yml) is done
-and the release is available at https://github.com/s-urbaniak/kube-atlas-cli/releases, execute:
-```
-TAG_NAME=vx.y.z GITHUB_TOKEN=<REDACTED> UPSTREAM_KREW_INDEX_REPO_NAME=kube-atlas-cli UPSTREAM_KREW_INDEX_REPO_OWNER=s-urbaniak go run cmd/krew/main.go
-```
-Replace `GITHUB_TOKEN` and `TAG_NAME` accordingly.
+2. Once the [release GitHub action](https://github.com/s-urbaniak/kube-atlas-cli/actions/workflows/release.yml) is done,
+approve and merge the krew index update. See https://github.com/s-urbaniak/kube-atlas-cli/pull/4 for an example PR.
 
-3. This will create a Pull Request to update the plugin index. Example: https://github.com/s-urbaniak/kube-atlas-cli/pull/4.
-4. Approve and merge the pull request.
