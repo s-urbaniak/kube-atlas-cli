@@ -11,7 +11,7 @@ import (
 func main() {
 	err := process(context.Background())
 	if err != nil {
-		fmt.Println(err)
+		fmt.Printf("\n%v\n", err)
 		os.Exit(1)
 	}
 }
@@ -20,9 +20,9 @@ func process(ctx context.Context) error {
 	releaseRequest := &source.ReleaseRequest{
 		TagName:            "v0.0.1",
 		PluginName:         "atlas",
-		PluginOwner:        "s-urbaniak",
 		PluginRepo:         "kube-atlias-cli",
-		PluginReleaseActor: "actor",
+		PluginOwner:        "s-urbaniak",
+		PluginReleaseActor: "s-urbaniak",
 		TemplateFile:       ".krew.yaml",
 	}
 
@@ -36,8 +36,14 @@ func process(ctx context.Context) error {
 
 	fmt.Printf("releasing %q, manifest:\n%s\n", pluginName, pluginManifest)
 
-	r := releaser.New("")
-	r.UpstreamKrewIndexRepoCloneURL = "git@github.com:s-urbaniak/kube-atlas-cli.git"
+	r := releaser.New(os.Getenv("GH_TOKEN"))
+	r.TokenEmail = "sergiusz.urbaniak@gmail.com"
+	r.TokenUserHandle = "s-urbaniak"
+	r.TokenUsername = "Sergiusz Urbaniak"
+	r.LocalKrewIndexRepoCloneURL = r.UpstreamKrewIndexRepoCloneURL
+	r.LocalKrewIndexRepo = r.UpstreamKrewIndexRepo
+	r.LocalKrewIndexRepoOwner = r.UpstreamKrewIndexRepoOwner
+
 	pr, err := r.Release(releaseRequest)
 	if err != nil {
 		return fmt.Errorf("error releasing request: %w", err)
