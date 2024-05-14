@@ -3,15 +3,15 @@ kind: Plugin
 metadata:
   name: atlas
 spec:
-  version: v0.0.3
+  version: v0.0.4
   homepage: https://github.com/s-urbaniak/kube-atlas-cli
   platforms:
   - selector:
       matchLabels:
         os: darwin
         arch: amd64
-    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.3/atlas_darwin_amd64.tar.gz
-    sha256: eabedda7419cb0f1715cf8ab7be796a9373dc21cfc9dd952b3fe5179938b6382
+    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.4/atlas_darwin_amd64.tar.gz
+    sha256: 36c313bfa6f4ff732c2e169e57251cba73ca3a71463ce3117489c0124b86b07e
     files:
       - from: "./atlas"
         to: "."
@@ -22,8 +22,8 @@ spec:
       matchLabels:
         os: darwin
         arch: arm64
-    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.3/atlas_darwin_arm64.tar.gz
-    sha256: 8462e10a04e51e1400ac5af9825accc6a394a698a3bf73ea54f3c9520de5b6a9
+    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.4/atlas_darwin_arm64.tar.gz
+    sha256: a81489e67975d6c38fe3ede32f41eb89b055e7763d27b2e8b6ff444bd5851582
     files:
       - from: "./atlas"
         to: "."
@@ -34,8 +34,8 @@ spec:
       matchLabels:
         os: linux
         arch: amd64
-    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.3/atlas_linux_amd64.tar.gz
-    sha256: 36928b446bc2311c36ce0755cedeca09482ac07907908497277a7f4221d12ed3
+    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.4/atlas_linux_amd64.tar.gz
+    sha256: 3adb63746e1c135e5e3e1e7ed421b722fc7ba6a4058afeb3eea13a4678060c92
     files:
       - from: "./atlas"
         to: "."
@@ -46,8 +46,8 @@ spec:
       matchLabels:
         os: linux
         arch: arm
-    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.3/atlas_linux_arm.tar.gz
-    sha256: 9f7a9cd4bbbd97a304c8f43565ed103e8e811a8c5c438cd95bac5bd1b5a81ba6
+    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.4/atlas_linux_arm.tar.gz
+    sha256: 88fb621268063ab7a23b342076f5f780b569d60ff9e4c309ddd19387b6137521
     files:
       - from: "./atlas"
         to: "."
@@ -58,8 +58,8 @@ spec:
       matchLabels:
         os: linux
         arch: arm64
-    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.3/atlas_linux_arm64.tar.gz
-    sha256: db3dcef5d7f5987eae4f43e86f0f2810841083a1fae072e77dbc5387a1bc185c
+    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.4/atlas_linux_arm64.tar.gz
+    sha256: 2997341274d8064a62d929a6d216ef95795d9e3678dd64abec135d235ac8008b
     files:
       - from: "./atlas"
         to: "."
@@ -70,8 +70,8 @@ spec:
       matchLabels:
         os: windows
         arch: arm64
-    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.3/atlas_windows_arm64.zip
-    sha256: a10dd5f9b1f2c169ad50194e096e9b819fdc24c1b6268ba7986344c1e3d660db
+    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.4/atlas_windows_arm64.zip
+    sha256: c20e874c5e4aaeff75965cde56571693db161e9d0cdb2f8ba6325466b6cee9f9
     files:
       - from: "/atlas.exe"
         to: "."
@@ -82,8 +82,8 @@ spec:
       matchLabels:
         os: windows
         arch: amd64
-    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.3/atlas_windows_amd64.zip
-    sha256: db795b5861c348d983cbb5f3cf684a17403930d33472566b2a56b426cfd32000
+    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.4/atlas_windows_amd64.zip
+    sha256: 62698c198a4b47f3247af2e9a3413a1dc3ec998371a831d957bf4b91e01bb010
     files:
       - from: "/atlas.exe"
         to: "."
@@ -94,8 +94,8 @@ spec:
       matchLabels:
         os: windows
         arch: arm
-    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.3/atlas_windows_arm.zip
-    sha256: 1e71dc11d174c05cceaab2b0f29a37b85a70b6f124a7fea4fb4e590c0095dd38
+    uri: https://github.com/s-urbaniak/kube-atlas-cli/releases/download/v0.0.4/atlas_windows_arm.zip
+    sha256: a4a7fbd73e93dc636a40667c2b52482e8c3cf1d76949005fb38594ffd8f8fa7d
     files:
       - from: "/atlas.exe"
         to: "."
