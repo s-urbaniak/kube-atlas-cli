@@ -1,6 +1,6 @@
 # kubectl atlas
 
-A `kubectl` plugin to interact with [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) leveraging the [MongoDB Atlas Operator](https://www.mongodb.com/docs/atlas/atlas-operator/).
+A [`kubectl` plugin](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/) to interact with [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) leveraging the [MongoDB Atlas Operator](https://www.mongodb.com/docs/atlas/atlas-operator/).
 
 ## Quick Start
 
