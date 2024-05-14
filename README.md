@@ -36,7 +36,7 @@ kubectl atlas --help
 
 ### Architecture
 
-This plugin builds on top of [krew](https://github.com/kubernetes-sigs/krew/tree/master).
+This plugin builds on top of the official Kubernetes Plugin framework [krew](https://github.com/kubernetes-sigs/krew/tree/master).
 
 An overview about the plugin architecture is available at https://github.com/kubernetes-sigs/krew/blob/master/docs/KREW_ARCHITECTURE.md.
 
