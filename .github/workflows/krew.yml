@@ -10,7 +10,7 @@ on:
         required: true
 
 jobs:
-  goreleaser:
+  krew:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
