@@ -6,6 +6,6 @@ A `kubectl` plugin to interact with [MongoDB Atlas](https://www.mongodb.com/clou
 
 ```
 kubectl krew index add atlas https://github.com/s-urbaniak/kube-atlas-cli.git
-kubectl krew install atlas
+kubectl krew install atlas/atlas
 kubectl atlas
 ```

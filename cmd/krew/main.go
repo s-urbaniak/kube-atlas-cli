@@ -18,7 +18,7 @@ func main() {
 
 func process(ctx context.Context) error {
 	releaseRequest := &source.ReleaseRequest{
-		TagName:            "v0.0.1",
+		TagName:            os.Getenv("TAG_NAME"),
 		PluginName:         "atlas",
 		PluginRepo:         "kube-atlias-cli",
 		PluginOwner:        "s-urbaniak",
@@ -36,7 +36,7 @@ func process(ctx context.Context) error {
 
 	fmt.Printf("releasing %q, manifest:\n%s\n", pluginName, pluginManifest)
 
-	r := releaser.New(os.Getenv("GH_TOKEN"))
+	r := releaser.New(os.Getenv("GITHUB_TOKEN"))
 	r.TokenEmail = "sergiusz.urbaniak@gmail.com"
 	r.TokenUserHandle = "s-urbaniak"
 	r.TokenUsername = "Sergiusz Urbaniak"

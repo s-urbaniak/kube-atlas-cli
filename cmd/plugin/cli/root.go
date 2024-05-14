@@ -17,7 +17,7 @@ var (
 )
 
 func RootCmd() *cobra.Command {
-	const use = "kubernetes"
+	const use = "atlas"
 	cmd := &cobra.Command{
 		Use:   use,
 		Short: "Manage Kubernetes resources.",
