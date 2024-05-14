@@ -19,7 +19,7 @@ import (
 type Logs struct {
 	namespace           string
 	atlasDeploymentName string
-	logName             string
+	logname             string
 	hostname            string
 	k8sClient           client.Client
 	logsDownloader      store.LogsDownloader
@@ -31,8 +31,8 @@ func (l *Logs) WithHostname(hostname string) *Logs {
 	return l
 }
 
-func (l *Logs) WithLogName(logName string) *Logs {
-	l.logName = logName
+func (l *Logs) WithLogname(logname string) *Logs {
+	l.logname = logname
 	return l
 }
 
@@ -103,7 +103,7 @@ func (l *Logs) Run(ctx context.Context) error {
 				params := &admin.GetHostLogsApiParams{
 					GroupId:  project.Status.ID,
 					HostName: l.hostname,
-					LogName:  l.logName,
+					LogName:  l.logname,
 				}
 				reader, err := l.logsDownloader.DownloadLog(params)
 				if err != nil {
