@@ -4,6 +4,8 @@ A `kubectl` plugin to interact with [MongoDB Atlas](https://www.mongodb.com/clou
 
 ## Quick Start
 
+### Installation
+
 1. Install [krew](https://krew.sigs.k8s.io/)
 2. Execute:
 ```
@@ -11,7 +13,19 @@ kubectl krew index add atlas https://github.com/s-urbaniak/kube-atlas-cli.git
 kubectl krew install atlas/atlas
 ```
 
-To upgrade, consult the [krew documentation](https://krew.sigs.k8s.io/docs/user-guide/upgrading-plugins/).
+### Upgrade
+
+To upgrade, consult the [krew documentation](https://krew.sigs.k8s.io/docs/user-guide/upgrading-plugins/) and execute:
+```
+$ kubectl krew upgrade
+
+Updated the local copy of plugin index "atlas".
+  Upgrades available for installed plugins:
+    * atlas/atlas v0.0.1 -> v0.0.2
+Upgrading plugin: atlas/atlas
+Upgraded plugin: atlas/atlas
+
+```
 
 3. Invoke the `atlas` kubectl plugin:
 ```
