@@ -3,6 +3,7 @@ package cli
 import (
 	"fmt"
 	"os"
+	"sigs.k8s.io/controller-runtime/pkg/manager/signals"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -28,6 +29,9 @@ func RootCmd() *cobra.Command {
 
 	cobra.OnInitialize(initConfig)
 	cmd.AddCommand(configcmd.Builder(), operatorcmd.Builder(), logscmd.Builder())
+
+	// wire SIGTERM and SIGINT
+	cmd.SetContext(signals.SetupSignalHandler())
 
 	return cmd
 }

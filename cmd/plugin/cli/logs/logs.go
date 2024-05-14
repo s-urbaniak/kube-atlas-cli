@@ -23,6 +23,7 @@ type LogsOpts struct {
 	*genericclioptions.ConfigFlags
 	logName  string
 	hostname string
+	follow   bool
 	store    *store.Store
 }
 
@@ -53,6 +54,7 @@ func (opts *LogsOpts) Run(ctx context.Context, deploymentName string) error {
 		WithK8sClient(k8sClient).
 		WithLogName(opts.logName).
 		WithHostname(opts.hostname).
+		WithFollow(opts.follow).
 		WithLogsDownloader(opts.store).
 		Run(ctx)
 
@@ -95,6 +97,7 @@ func Builder() *cobra.Command {
 		},
 	}
 
+	cmd.Flags().BoolVarP(&opts.follow, "follow", "f", false, `Specify if the logs should be streamed.`)
 	cmd.Flags().StringVarP(&opts.hostname, "hostname", "H", "", `Human-readable label that identifies the host that stores the log files that you want to download.`)
 	cmd.Flags().StringVarP(&opts.logName, "logname", "l", "mongodb", `Human-readable label that identifies the log file that you want to return. 
 To return audit logs, enable Database Auditing for the specified project.
